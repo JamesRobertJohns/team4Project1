@@ -1,4 +1,5 @@
 import random
+import sys
 
 random.seed(42)     # replicable seed value
 
@@ -10,11 +11,19 @@ SCALE_FACOTR = 10
 file_index = 1
 i = MIN_SIZE
 while (i <= MAX_SIZE):
-    file = open('input_%i.txt' % file_index, 'w')
+    try:
+        file = open('input_%i.txt' % file_index, 'w')
+        # raise OSError("Assert false")
+    except OSError:
+        print("[-] Error in writing file 'input_%i.txt'" % file_index)
+        sys.exit()
+
     A = [str(random.randint(1, MAX_INT)) for k in range(1, i+1)] 
     file.write((" ").join(A))
     file.write("\n")
     file_index += 1
     i *= SCALE_FACOTR 
     file.close()
+    msg = "[+] input_{0}.txt generated. number of elements is {1}."  
+    print(msg.format(file_index-1, i)) 
 
