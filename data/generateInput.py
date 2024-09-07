@@ -5,7 +5,7 @@ random.seed(42)     # replicable seed value
 
 MAX_SIZE = 10 * 10**6
 MIN_SIZE = 10**3
-MAX_INT = 2**16 
+MAX_INT = 2**31 - 1 
 SCALE_FACOTR = 10
 
 file_index = 1
