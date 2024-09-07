@@ -22,6 +22,11 @@ int main() {
 
 	cout<< "the orginal array should be unmodified: " << endl;
 	printArray(TEST);
+	cout << endl;
+
+	cout << "test unsort()" << endl;
+	test.unsort();
+	printArray(test.getArray());
 
 	return 0;
 }

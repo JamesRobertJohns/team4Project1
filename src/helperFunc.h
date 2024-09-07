@@ -2,8 +2,10 @@ struct MergeSort {
 	MergeSort(vector<int>& IN) :
 		n{ IN.size() },
 		key_cmp{} {
-		for (const auto& i : IN) 
-			A.push_back(i);			
+		for (const auto& i : IN) {
+			A.push_back(i);
+			U.push_back(i);
+		}			
 	}
 			
 	void sort_default(int p, int r) {
@@ -69,8 +71,13 @@ struct MergeSort {
 		return A;
 	}
 
+	void unsort() {
+		key_cmp = 0;
+		A = U;	
+	}		
+
 	private:
-		vector<int> A;
+		vector<int> A, U;
 		unsigned n;
 		unsigned long long key_cmp;
 };
