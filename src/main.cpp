@@ -31,6 +31,7 @@ int main() {
 	cout << endl;
 
 	cout << "test insertion_sort()" << endl;
+	test.unsort();
 	test.insertionSort();
 	printArray(test.getArray());
 	cout << "number of key comparisons: " << test.getKeyCmp_insertionSort() << endl;

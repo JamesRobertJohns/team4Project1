@@ -91,7 +91,7 @@ struct MergeSort {
 	unsigned long long getKeyCmp() { return key_cmp; }
 	unsigned long getKeyCmp_insertionSort() { return key_cmp_insertionSort; }
 	vector<int>& getArray() { return A; }
-	void unsort() { key_cmp = 0; A = U; }		
+	void unsort() { key_cmp = 0; key_cmp_insertionSort = 0; A = U; }		
 
 	private:
 		vector<int> A, U;
