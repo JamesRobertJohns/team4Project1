@@ -1,6 +1,8 @@
 #ifndef PROJECT1_HPP
 #define PROJECT1_HPP
 
+using namespace std;
+
 struct MergeSort {
 	MergeSort(vector<int>& IN) :
 		n{ IN.size() },
