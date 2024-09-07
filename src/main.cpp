@@ -27,6 +27,13 @@ int main() {
 	cout << "test unsort()" << endl;
 	test.unsort();
 	printArray(test.getArray());
+	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
+	cout << endl;
+
+	cout << "test insertion_sort()" << endl;
+	test.insertionSort();
+	printArray(test.getArray());
+	cout << "number of key comparisons: " << test.getKeyCmp_insertionSort() << endl;
 
 	return 0;
 }

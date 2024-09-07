@@ -1,7 +1,8 @@
 struct MergeSort {
 	MergeSort(vector<int>& IN) :
 		n{ IN.size() },
-		key_cmp{} {
+		key_cmp{},
+	   	key_cmp_insertionSort{} {
 		for (const auto& i : IN) {
 			A.push_back(i);
 			U.push_back(i);
@@ -21,8 +22,18 @@ struct MergeSort {
 		 // TODO 
 	}
 
-	void insertion_sort() {
-		// TODO
+	void insertionSort() {
+		for (int i = 1; i < n; i++) {
+			for (int j = i ; j > 0; j--) {
+				key_cmp_insertionSort++;
+				if (A[j] < A[j-1]) {
+					int t = A[j];
+					A[j] = A[j-1];
+					A[j-1] = t;
+				}
+				else break;
+			}
+		}
 	}
 
 	void merge(int p, int q, int r) {
@@ -66,6 +77,10 @@ struct MergeSort {
 	unsigned long long getKeyCmp() {
 		return key_cmp;
 	}
+	
+	unsigned long getKeyCmp_insertionSort() {
+		return key_cmp_insertionSort;
+	}
 
 	vector<int>& getArray() {
 		return A;
@@ -80,6 +95,7 @@ struct MergeSort {
 		vector<int> A, U;
 		unsigned n;
 		unsigned long long key_cmp;
+		unsigned long key_cmp_insertionSort;
 };
 
 
