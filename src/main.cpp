@@ -6,7 +6,7 @@ using namespace std;
 #include "helperFunc.h"
 
 int main() {
-	vector<int> TEST = { 1, 24, 211, 12, 10, 1923, 10, 10000, 129, 129, 129, 45 };
+	vector<int> TEST = { 14, 40, 31, 28, 3, 15, 17, 51 };
 
 	MergeSort test{ TEST };
 	cout << "unsorted test array: " << endl;
