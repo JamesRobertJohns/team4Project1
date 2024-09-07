@@ -3,7 +3,8 @@
 
 using namespace std;
 
-#include "helperFunc.h"
+#include "project1.h"
+#include "myutils.h"
 
 int main() {
 	

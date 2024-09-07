@@ -105,10 +105,3 @@ struct MergeSort {
 		unsigned long key_cmp_insertionSort;
 		short int k;
 };
-
-
-void printArray(vector<int>& A) {
-	for (const auto& i : A)
-		cout << i << ' ';
-	cout << endl;
-}
