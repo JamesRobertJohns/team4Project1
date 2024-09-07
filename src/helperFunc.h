@@ -2,7 +2,8 @@ struct MergeSort {
 	MergeSort(vector<int>& IN) :
 		n{ IN.size() },
 		key_cmp{},
-	   	key_cmp_insertionSort{} {
+	   	key_cmp_insertionSort{},
+	   	k{ 2 } {
 		for (const auto& i : IN) {
 			A.push_back(i);
 			U.push_back(i);
@@ -18,14 +19,27 @@ struct MergeSort {
 		}
 	}	
 
-	void sort_modified() {
-		 // TODO 
+	void sort_modified(int p, int r) {
+		if (r == k-1) { 
+			insertionSort();
+			return;
+		}
+		
+		if (p < r) {
+				int q  = (p+r) / 2;
+				sort_modified(p, q);
+				sort_modified(q+1, r);
+				merge(p, q, r);
+			}
 	}
+
+	void setK(short int k) { this->k = k; } 
 
 	void insertionSort() {
 		for (int i = 1; i < n; i++) {
 			for (int j = i ; j > 0; j--) {
 				key_cmp_insertionSort++;
+				key_cmp++;
 				if (A[j] < A[j-1]) {
 					int t = A[j];
 					A[j] = A[j-1];
@@ -74,28 +88,17 @@ struct MergeSort {
 
 	}
 
-	unsigned long long getKeyCmp() {
-		return key_cmp;
-	}
-	
-	unsigned long getKeyCmp_insertionSort() {
-		return key_cmp_insertionSort;
-	}
-
-	vector<int>& getArray() {
-		return A;
-	}
-
-	void unsort() {
-		key_cmp = 0;
-		A = U;	
-	}		
+	unsigned long long getKeyCmp() { return key_cmp; }
+	unsigned long getKeyCmp_insertionSort() { return key_cmp_insertionSort; }
+	vector<int>& getArray() { return A; }
+	void unsort() { key_cmp = 0; A = U; }		
 
 	private:
 		vector<int> A, U;
 		unsigned n;
 		unsigned long long key_cmp;
 		unsigned long key_cmp_insertionSort;
+		short int k;
 };
 
 

@@ -20,7 +20,7 @@ int main() {
 	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
 	cout << endl;
 
-	cout<< "the orginal array should be unmodified: " << endl;
+	cout << "the orginal array should be unmodified: " << endl;
 	printArray(TEST);
 	cout << endl;
 
@@ -34,6 +34,22 @@ int main() {
 	test.insertionSort();
 	printArray(test.getArray());
 	cout << "number of key comparisons: " << test.getKeyCmp_insertionSort() << endl;
+	cout << endl;
+
+	cout << "test modified_sort(), k is default" << endl;
+	test.unsort();
+	test.sort_modified(0, TEST.size()-1);
+	printArray(test.getArray());
+	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
+	cout << endl;
+	
+	cout << "test modified_sort(), k is size of array" << endl;
+	test.unsort();
+	test.setK(TEST.size());
+	test.sort_modified(0, TEST.size()-1);
+	printArray(test.getArray());
+	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
+	cout << endl;
 
 	return 0;
 }
