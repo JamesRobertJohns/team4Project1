@@ -88,6 +88,11 @@ struct MergeSort {
 
 	}
 
+	void info() {
+		cout << "Number of key comparisons made: " << key_cmp << endl;
+		cout << "|--> Number of key comparisons made by insertion sort: " << key_cmp_insertionSort << endl;
+	}
+
 	unsigned long long getKeyCmp() { return key_cmp; }
 	unsigned long getKeyCmp_insertionSort() { return key_cmp_insertionSort; }
 	vector<int>& getArray() { return A; }
