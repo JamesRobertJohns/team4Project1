@@ -20,7 +20,7 @@ struct MergeSort {
 	}	
 
 	void sort_modified(int p, int r) {
-		if (r == k-1) { 
+		if (r <= k-1) { 
 			insertionSort();
 			return;
 		}

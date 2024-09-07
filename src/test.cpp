@@ -38,13 +38,19 @@ int main() {
 	cout << "number of key comparisons: " << test.getKeyCmp_insertionSort() << endl;
 	cout << endl;
 
-	cout << "test modified_sort(), k is default" << endl;
+	cout << "test modified_sort(), k is defaut (2)" << endl;
 	test.unsort();
 	test.sort_modified(0, TEST.size()-1);
-	printArray(test.getArray());
-	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
+	test.info();
 	cout << endl;
-	
+
+	cout << "modified_sort(), k = 5" << endl;	
+	test.unsort();
+	test.setK(5);
+	test.sort_modified(0, TEST.size()-1);
+	test.info();
+	cout << endl;
+
 	cout << "modified_sort(), k = 8" << endl;	
 	test.unsort();
 	test.setK(TEST.size());
