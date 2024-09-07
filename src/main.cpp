@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#include "project1.h"
-#include "myutils.h"
+#include "project1.hpp"
+#include "myutils.hpp"
 
 int main() {
 	

@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#include "project1.h"
-#include "myutils.h"
+#include "project1.hpp"
+#include "myutils.hpp"
 
 int main() {
 	vector<int> TEST = { 14, 40, 31, 28, 3, 15, 17, 51 };

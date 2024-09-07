@@ -1,3 +1,6 @@
+#ifndef PROJECT1_HPP
+#define PROJECT1_HPP
+
 struct MergeSort {
 	MergeSort(vector<int>& IN) :
 		n{ IN.size() },
@@ -105,3 +108,5 @@ struct MergeSort {
 		unsigned long key_cmp_insertionSort;
 		short int k;
 };
+
+#endif // PROJECT1_HPP
