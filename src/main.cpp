@@ -10,14 +10,18 @@ int main() {
 
 	MergeSort test{ TEST };
 	cout << "unsorted test array: " << endl;
-	printArray(TEST);
+	printArray(test.getArray());
 	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
 	cout << endl;
 
-	test.sort_default(TEST, 0, TEST.size()-1);
+	test.sort_default(0, TEST.size()-1);
 	cout << "sorted test array: " << endl;
-	printArray(TEST);
+	printArray(test.getArray());
 	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
-	
+	cout << endl;
+
+	cout<< "the orginal array should be unmodified: " << endl;
+	printArray(TEST);
+
 	return 0;
 }

@@ -1,14 +1,17 @@
 struct MergeSort {
-	MergeSort(vector<int>& A) :
-		n{ A.size() },
-	       	key_cmp{} {}
+	MergeSort(vector<int>& IN) :
+		n{ IN.size() },
+		key_cmp{} {
+		for (const auto& i : IN) 
+			A.push_back(i);			
+	}
 			
-	void sort_default(vector<int>& A, int p, int r) {
+	void sort_default(int p, int r) {
 		if ( p < r ) {
 			int q  = (p+r) / 2;
-			this->sort_default(A, p, q);
-			this->sort_default(A, q+1, r);
-			merge(A, p, q, r);
+			sort_default(p, q);
+			sort_default(q+1, r);
+			merge(p, q, r);
 		}
 	}	
 
@@ -20,7 +23,7 @@ struct MergeSort {
 		// TODO
 	}
 
-	void merge(vector<int>& A, int p, int q, int r) {
+	void merge(int p, int q, int r) {
 		vector<int> L, R;
 		for (int i = p; i <= q; i++) L.push_back(A[i]);
 		for (int i = q+1; i <= r; i++) R.push_back(A[i]);
@@ -55,20 +58,26 @@ struct MergeSort {
 				}
 			}
 		}
+
 	}
 
 	unsigned long long getKeyCmp() {
 		return key_cmp;
 	}
 
+	vector<int>& getArray() {
+		return A;
+	}
+
 	private:
+		vector<int> A;
 		unsigned n;
-		unsigned long long key_cmp{};
+		unsigned long long key_cmp;
 };
 
 
 void printArray(vector<int>& A) {
-	for (const auto i : A)
+	for (const auto& i : A)
 		cout << i << ' ';
-	cout <<  endl;
+	cout << endl;
 }
