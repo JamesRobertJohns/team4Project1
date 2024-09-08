@@ -6,7 +6,7 @@ random.seed(42)     # replicable seed value
 MAX_SIZE = 10 * 10**6
 MIN_SIZE = 10**3
 MAX_INT = 2**31 - 1  
-SCALE_FACOTR = 10
+SCALE_FACTOR = 10
 
 file_index = 1
 i = MIN_SIZE
@@ -22,7 +22,7 @@ while (i <= MAX_SIZE):
     file.write(("\n").join(A))
     file.write("\n")
     file_index += 1
-    i *= SCALE_FACOTR 
+    i *= SCALE_FACTOR 
     file.close()
     msg = "[+] input_{0}.txt generated. number of elements is {1}."  
     print(msg.format(file_index-1, i)) 
