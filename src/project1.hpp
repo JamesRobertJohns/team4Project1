@@ -8,40 +8,31 @@ struct MergeSort {
 		n{ IN.size() },
 		key_cmp{},
 	   	key_cmp_insertionSort{},
-	   	k{ 2 } {
+	   	k{ 10 } {
 		for (const auto& i : IN) {
 			A.push_back(i);
 			U.push_back(i);
 		}			
 	}
 			
-	void sort_default(int p, int r) {
-		if ( p < r ) {
-			int q  = (p+r) / 2;
-			sort_default(p, q);
-			sort_default(q+1, r);
-			merge(p, q, r);
-		}
-	}	
-
-	void sort_modified(int p, int r) {
-		if (r <= k-1) { 
-			insertionSort();
+	void sort(int p, int r) {
+		if (r - p + 1 <= k) { 
+			insertionSort(p, r);
 			return;
 		}
 		
 		if (p < r) {
 				int q  = (p+r) / 2;
-				sort_modified(p, q);
-				sort_modified(q+1, r);
+				sort(p, q);
+				sort(q+1, r);
 				merge(p, q, r);
 			}
 	}
 
 	void setK(short int k) { this->k = k; } 
 
-	void insertionSort() {
-		for (int i = 1; i < n; i++) {
+	void insertionSort(int p, int r) {
+		for (int i = p+1; i <= r; i++) {
 			for (int j = i ; j > 0; j--) {
 				key_cmp_insertionSort++;
 				key_cmp++;
@@ -94,13 +85,15 @@ struct MergeSort {
 	}
 
 	void info() {
+		cout << "k chosen: " << k << endl;
 		cout << "Number of key comparisons made: " << key_cmp << endl;
 		cout << "|--> Number of key comparisons made by insertion sort: " << key_cmp_insertionSort << endl;
 	}
-
-	unsigned long long getKeyCmp() { return key_cmp; }
-	unsigned long getKeyCmp_insertionSort() { return key_cmp_insertionSort; }
+	
+	const auto getKeyCmp() const { return key_cmp; }
+	const auto getKeyCmp_insertionSort() const { return key_cmp_insertionSort; }
 	vector<int>& getArray() { return A; }
+	const auto getSize() const { return U.size(); }	
 	void unsort() { key_cmp = 0; key_cmp_insertionSort = 0; A = U; }		
 
 	private:
