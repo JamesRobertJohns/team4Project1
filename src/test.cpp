@@ -1,7 +1,9 @@
+#include <chrono>
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <iterator>
+
 #include "project1.hpp"
 #include "myutils.hpp"
 
@@ -34,39 +36,16 @@ int main() {
 	cout << endl;
 
 	cout << "test insertion_sort()" << endl;
-	test.unsort();
-	test.insertionSort(0, TEST.size()-1);
+	TEST_SORT(&test, TEST.size()-1);
 	printArray(test.getArray());
-	test.info();
-	cout << endl;
-
 	cout << "test modified_sort()" << endl;
-	test.unsort();
-	test.setK(10);
-	test.sort(0, TEST.size()-1);
-	test.info();
-	cout << endl;
-
+	TEST_SORT(&test, 10);
 	cout << "modified_sort(), k = 5" << endl;	
-	test.unsort();
-	test.setK(5);
-	test.sort(0, TEST.size()-1);
-	test.info();
-	cout << endl;
-
+	TEST_SORT(&test, 5);
 	cout << "modified_sort(), k = 8" << endl;	
-	test.unsort();
-	test.setK(TEST.size());
-	test.sort(0, TEST.size()-1);
-	test.info();
-	cout << endl;
-
+	TEST_SORT(&test, 8);
 	cout << "sort(), k = 10" << endl;
-	test.unsort();
-	test.setK(10);
-	test.sort(0, TEST.size()-1);
-	test.info();
-	cout << endl;
+	TEST_SORT(&test, 10);
 
 	try {
 		ifstream file;
@@ -75,14 +54,7 @@ int main() {
 		vector<int> input(start, end);
 		cout << "Read " << input.size() << " numbers" << endl;
 		MergeSort* test_thousand = new MergeSort{ input };
-		
-		
-		TEST_SORT(test_thousand, 0);
-		TEST_SORT(test_thousand, input.size());
-		TEST_SORT(test_thousand, 100);	
-
-		for (int i = 1; i <= 500; i++) TEST_SORT(test_thousand, i);
-
+		for (int i = 0; i <= 1000; i++) TEST_SORT(test_thousand, i);
 		delete test_thousand;
 		file.close();
 	} catch(bad_alloc& e) {
@@ -97,7 +69,11 @@ int main() {
 void TEST_SORT(MergeSort* ms, long long k) {
 	ms->unsort();
 	ms->setK(k);
+	const auto t1 = chrono::high_resolution_clock::now();
 	ms->sort(0, ms->getSize()-1); 
+	const auto t2 = chrono::high_resolution_clock::now();
+	chrono::duration<double, std::milli> ms_double = t2 - t1;
 	ms->info();
+	cout << "time taken: " << ms_double.count() << "ms\n";
 	cout << endl;
 }
