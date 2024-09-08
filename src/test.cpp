@@ -35,16 +35,10 @@ int main() {
 	cout << "number of key comparisons: " << test.getKeyCmp() << endl;
 	cout << endl;
 
-	cout << "test insertion_sort()" << endl;
 	TEST_SORT(&test, TEST.size()-1);
-	printArray(test.getArray());
-	cout << "test modified_sort()" << endl;
 	TEST_SORT(&test, 10);
-	cout << "modified_sort(), k = 5" << endl;	
 	TEST_SORT(&test, 5);
-	cout << "modified_sort(), k = 8" << endl;	
 	TEST_SORT(&test, 8);
-	cout << "sort(), k = 10" << endl;
 	TEST_SORT(&test, 10);
 
 	try {
