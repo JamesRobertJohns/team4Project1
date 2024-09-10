@@ -97,4 +97,35 @@ struct MergeSort {
 		short int k;
 };
 
+void logger(string path_input, string path_output, short k) {
+	ifstream input; 
+	ofstream output;
+	input.open(path_input);
+	output.open(path_output, ios::app);
+
+	if (!input || !output) {throw std::runtime_error{"[-] In logger(): Error in opening files"}; }
+
+	istream_iterator<int> start(input), end;
+	vector<int> data(start, end);
+	MergeSort* ms = new MergeSort{ data };	
+	if (k < 0) {
+	   	if (k == -1) ms->setK(data.size());
+		else throw std::runtime_error{"[-] In logger(): Invalid assignment of k"};	
+	} 
+	else ms->setK(k);
+	
+	const auto t1 = chrono::high_resolution_clock::now();
+	ms->sort(0, ms->getSize()-1);
+	const auto t2 = chrono::high_resolution_clock::now();
+	chrono::duration<double, std::milli> ms_double = t2 - t1;
+
+	output 	<< ms->getKeyCmp() << ", " 
+			<< ms->getKeyCmp_insertionSort() << ", " 
+			<< ms_double.count() << "\n";	
+
+	input.close();
+	output.close();
+	delete ms;
+}
+
 #endif // PROJECT1_HPP
