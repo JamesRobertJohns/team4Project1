@@ -1,5 +1,6 @@
 #include <chrono>
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 #include <fstream>
 #include <iterator>
@@ -8,6 +9,7 @@
 #include "myutils.hpp"
 
 void TEST_SORT(MergeSort*, long long);
+void logger(string, string, short);
 
 int main() {
 	vector<int> TEST = { 14, 40, 31, 28, 3, 15, 17, 51 };
@@ -42,23 +44,21 @@ int main() {
 	TEST_SORT(&test, 10);
 
 	try {
-		ifstream file;
-		file.open("../data/input_1.txt");
-		istream_iterator<int> start(file), end;
-		vector<int> input(start, end);
-		cout << "Read " << input.size() << " numbers" << endl;
-		MergeSort* test_thousand = new MergeSort{ input };
-		for (int i = 0; i <= 1000; i++) TEST_SORT(test_thousand, i);
-		delete test_thousand;
-		file.close();
-	} catch(bad_alloc& e) {
+		int i = 1;
+		string name = "../data/input_";
+		while (i <= 5) { 
+			string appendedName = name + to_string(i) + ".txt";
+			cout << "logging " << appendedName << " now...\n";
+			logger(appendedName, "../data/output_1.txt", 20);			
+			i++;
+		}
+	} catch(std::exception& e) {
 		cout << e.what() << endl;
 		exit(1);
 	}
 
 	return 0;
 }
-
 
 void TEST_SORT(MergeSort* ms, long long k) {
 	ms->unsort();
