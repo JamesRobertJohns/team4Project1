@@ -57,6 +57,19 @@ int main() {
 		exit(1);
 	}
 
+	/*try {
+		int i = 1; // fix n := 1 million
+		string name = "../data/input_";
+		while (i < 999999) { 
+			cout << "logging for k = " << to_string(i) << " now...\n";
+			logger("../data/input_4.txt", "../data/output_2.txt", i);			
+			i++;
+		}
+	} catch(std::exception& e) {
+		cout << e.what() << endl;
+		exit(1);
+	}*/
+
 	return 0;
 }
 

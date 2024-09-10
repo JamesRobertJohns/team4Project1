@@ -15,7 +15,11 @@ int main() {
 	//
 	// output_1: k is set to 20
 	// format:
-	// total number of key cmp, key cmp by insertion sort, run time
+	// size of input array,
+	// value of k chosen,
+	// total number of key cmp, 
+	// key cmp by insertion sort, 
+	// run time
 
 	try {
 		int i = 1;

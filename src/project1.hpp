@@ -83,6 +83,7 @@ struct MergeSort {
 	}
 	
 	void setK(short int k) { this->k = k; } 
+	short getK() { return k; }
 	const auto getKeyCmp() const { return key_cmp; }
 	const auto getKeyCmp_insertionSort() const { return key_cmp_insertionSort; }
 	vector<int>& getArray() { return A; }
@@ -119,7 +120,9 @@ void logger(string path_input, string path_output, short k) {
 	const auto t2 = chrono::high_resolution_clock::now();
 	chrono::duration<double, std::milli> ms_double = t2 - t1;
 
-	output 	<< ms->getKeyCmp() << ", " 
+	output 	<< ms->getSize() << ", "
+			<< ms->getK() << ", " 
+			<< ms->getKeyCmp() << ", " 
 			<< ms->getKeyCmp_insertionSort() << ", " 
 			<< ms_double.count() << "\n";	
 
