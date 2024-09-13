@@ -1,4 +1,0 @@
-1. generateInput.py
-|--> generates random integer values from 1 to max(16 bytes).
-|--> seed value set to 42 for replication
-|--> each array size is scaled by a order of magnitude
