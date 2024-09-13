@@ -68,7 +68,7 @@ int main() {
 			while (j <= 1000) {
 				cout << "logging for k = " << to_string(j) << " now...\n";
 				string finame = iname + to_string(i) + ".txt";
-				string foname = oname + to_string(i) + ".txt";	
+				string foname = oname + to_string(i) + ".csv";	
 				logger(finame, foname, j);
 				j++;
 			}
