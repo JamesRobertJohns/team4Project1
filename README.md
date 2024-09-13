@@ -35,3 +35,5 @@ The individual sorting algorithms are well studied and defined. Refer to the sou
 ## Logging Results
 
 The logging methods called are rather simple. We set a member `int` type to hold the key comparisons and defined a getter. The runtime are logged by calling `high_resolution_clock` in the `<chrono>` header
+
+Note that the run time results are dependent on the hardware used and are influenced by many factors. Our OS used is `Windows 11 (Home) x86_64`, and CPU used is `Intel(R) Core(TM) i7-10750H (12) @ 2.59 GHz`
