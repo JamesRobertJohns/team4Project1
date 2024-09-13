@@ -5,4 +5,4 @@
 
 2. format of output `.csv`
 
-| number of elements in array | value of k | total key comparisons | comparisons by insertion sort | runt ime (ms) 
+| number of elements in array | value of k | total key comparisons | comparisons by insertion sort | run time (ms) 
