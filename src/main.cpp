@@ -35,5 +35,33 @@ int main() {
 		exit(1);
 	}
 
+
+	// c iii)
+	// in order to find optimal value, we iterate over k = 1 to k = 1000
+	// for every input set. by doing this, we also do c ii) implicitly
+	// this is because the solution can also be found in c ii)
+	try {
+		int i = 1;
+		string iname = "../data/input_";
+		string oname = "../data/ciii_";
+		while (i <= 5) {  		
+			int j = 1;	
+			string appendedName = oname + to_string(i) + ".txt";	
+			cout << "logging " << appendedName << " now...\n";			
+			while (j <= 1000) {
+				cout << "logging for k = " << to_string(j) << " now...\n";
+				string finame = iname + to_string(i) + ".txt";
+				string foname = oname + to_string(i) + ".txt";	
+				logger(finame, foname, j);
+				j++;
+			}
+		 i++;
+		}
+	} catch(std::exception& e) {
+		cout << e.what() << endl;
+		exit(1);
+	} 
+
+
 	return 0;
 }
