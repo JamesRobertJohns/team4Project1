@@ -1,3 +1,4 @@
+ArraySize,S,TotalKeyCmp,KeyCmpInsertionSort,Runtime
 1000, 1, 8693, 0, 0.8832
 1000, 2, 8693, 488, 0.6734
 1000, 3, 8693, 531, 0.7266
