@@ -43,42 +43,7 @@ int main() {
 	TEST_SORT(&test, 8);
 	TEST_SORT(&test, 10);
 
-	try {
-		int i = 1;
-		string name = "../data/input_";
-		while (i <= 5) { 
-			string appendedName = name + to_string(i) + ".txt";
-			cout << "logging " << appendedName << " now...\n";
-			logger(appendedName, "../data/output_1.txt", 20);			
-			i++;
-		}
-	} catch(std::exception& e) {
-		cout << e.what() << endl;
-		exit(1);
-	}
-
-	try {
-		int i = 1;
-		string iname = "../data/input_";
-		string oname = "../data/ciii_";
-		while (i <= 5) {  		
-			int j = 1;	
-			string appendedName = oname + to_string(i) + ".txt";	
-			cout << "logging " << appendedName << " now...\n";			
-			while (j <= 1000) {
-				cout << "logging for k = " << to_string(j) << " now...\n";
-				string finame = iname + to_string(i) + ".txt";
-				string foname = oname + to_string(i) + ".csv";	
-				logger(finame, foname, j);
-				j++;
-			}
-		 i++;
-		}
-	} catch(std::exception& e) {
-		cout << e.what() << endl;
-		exit(1);
-	} 
-
+}
 
 
 void TEST_SORT(MergeSort* ms, long long k) {

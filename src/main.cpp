@@ -60,6 +60,43 @@ int main() {
 	} catch(std::exception& e) {
 		cout << e.what() << endl;
 		exit(1);
+	}
+
+	// c iii) proving optimality
+	try {
+		int i = 1;
+		int Ak[2] = {37, 60};
+		string iname = "../data/input_";
+		string oname = "../data/check.csv";
+		while (i <= 5) {  		
+			int j = 0;	
+			cout << "logging " << oname << " now...\n";			
+			while (j < 2) {
+				cout << "logging for k = " << to_string(Ak[j]) << " now...\n";
+				string finame = iname + to_string(i) + ".txt";
+				logger(finame, oname, Ak[j]);
+				j++;
+			}
+		 i++;
+		}
+	} catch(std::exception& e) {
+		cout << e.what() << endl;
+		exit(1);
+	}
+
+	// d) 
+	// set k to optimal 60
+	// set k to 0 to mimic normal merge sort
+
+	try {
+		string iname = "../data/input_5.txt";
+		string oname = "../data/d.csv";
+		cout << "logging " << iname << " now...\n";			
+		logger(iname, oname, 60);
+		logger(iname, oname, 0); 
+	} catch(std::exception& e) {
+		cout << e.what() << endl;
+		exit(1);
 	} 
 
 
