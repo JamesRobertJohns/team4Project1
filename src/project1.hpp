@@ -8,7 +8,7 @@ struct MergeSort {
 		n{ IN.size() },
 		key_cmp{},
 	   	key_cmp_insertionSort{},
-	   	k{ 10 } {
+	   	k{ 20 } {
 		for (const auto& i : IN) {
 			A.push_back(i);
 			U.push_back(i);
@@ -29,11 +29,9 @@ struct MergeSort {
 			}
 	}
 
-	void setK(short int k) { this->k = k; } 
-
 	void insertionSort(int p, int r) {
 		for (int i = p+1; i <= r; i++) {
-			for (int j = i ; j > 0; j--) {
+			for (int j = i ; j > p; j--) {
 				key_cmp_insertionSort++;
 				key_cmp++;
 				if (A[j] < A[j-1]) {
@@ -52,7 +50,7 @@ struct MergeSort {
 		for (int i = q+1; i <= r; i++) R.push_back(A[i]);
 		
 		int idx_L{}, idx_R{}, idx_A{ p };
-		while (idx_L < L.size() && idx_R < R.size() && idx_A < n) {
+		while (idx_L < L.size() && idx_R < R.size()) {
 			if (L[idx_L] < R[idx_R]) {
 				A[idx_A] = L[idx_L];
 				idx_L++;		
@@ -65,23 +63,17 @@ struct MergeSort {
 			key_cmp++;
 		}	
 		
-		if (idx_A < n) {
-			if (idx_L < L.size()) {
-				while (idx_L < L.size()) {
-					A[idx_A] = L[idx_L];
-					idx_L++;
-					idx_A++;
-				}	
-			}
-			else{
-				while (idx_R < R.size()) {
-					A[idx_A] = R[idx_R];
-					idx_R++;
-					idx_A++;
-				}
-			}
+		while (idx_L < L.size()) {
+			A[idx_A] = L[idx_L];
+			idx_L++;
+			idx_A++;
 		}
-
+				
+		while (idx_R < R.size()) {
+			A[idx_A] = R[idx_R];
+			idx_R++;
+			idx_A++;
+		}
 	}
 
 	void info() {
@@ -90,6 +82,8 @@ struct MergeSort {
 		cout << "|--> Number of key comparisons made by insertion sort: " << key_cmp_insertionSort << endl;
 	}
 	
+	void setK(short int k) { this->k = k; } 
+	short getK() { return k; }
 	const auto getKeyCmp() const { return key_cmp; }
 	const auto getKeyCmp_insertionSort() const { return key_cmp_insertionSort; }
 	vector<int>& getArray() { return A; }
@@ -103,5 +97,38 @@ struct MergeSort {
 		unsigned long key_cmp_insertionSort;
 		short int k;
 };
+
+void logger(string path_input, string path_output, short k) {
+	ifstream input; 
+	ofstream output;
+	input.open(path_input);
+	output.open(path_output, ios::app);
+
+	if (!input || !output) {throw std::runtime_error{"[-] In logger(): Error in opening files"}; }
+
+	istream_iterator<int> start(input), end;
+	vector<int> data(start, end);
+	MergeSort* ms = new MergeSort{ data };	
+	if (k < 0) {
+	   	if (k == -1) ms->setK(data.size());
+		else throw std::runtime_error{"[-] In logger(): Invalid assignment of k"};	
+	} 
+	else ms->setK(k);
+	
+	const auto t1 = chrono::high_resolution_clock::now();
+	ms->sort(0, ms->getSize()-1);
+	const auto t2 = chrono::high_resolution_clock::now();
+	chrono::duration<double, std::milli> ms_double = t2 - t1;
+
+	output 	<< ms->getSize() << ", "
+			<< ms->getK() << ", " 
+			<< ms->getKeyCmp() << ", " 
+			<< ms->getKeyCmp_insertionSort() << ", " 
+			<< ms_double.count() << "\n";	
+
+	input.close();
+	output.close();
+	delete ms;
+}
 
 #endif // PROJECT1_HPP
